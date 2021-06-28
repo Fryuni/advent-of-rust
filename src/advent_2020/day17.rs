@@ -75,11 +75,13 @@ impl AdventState for AdventDay17 {
             active_cells: input_content
                 .split('\n')
                 .enumerate()
-                .flat_map(|(x, line)| {
+                .flat_map(|(line_index, line)| {
                     line.chars()
                         .enumerate()
                         .filter(|&(_, char)| char == '#')
-                        .map(move |(y, _)| Coordinates(x as isize, y as isize, 0, 0))
+                        .map(move |(column_index, _)| {
+                            Coordinates(line_index as isize, column_index as isize, 0, 0)
+                        })
                 })
                 .collect(),
         }
