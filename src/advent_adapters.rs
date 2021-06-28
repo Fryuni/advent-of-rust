@@ -35,7 +35,7 @@ impl<T: AdventState> Advent for StatefulAdvent<T> {
         data.into_iter()
             .zip(T::INPUT_FILES.iter().copied())
             .for_each(|(input, file_name)| {
-                println!("Processing file {}", file_name);
+                println!("\nProcessing file {}", file_name);
                 T::new(file_name, input).run();
             })
     }
