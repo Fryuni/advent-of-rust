@@ -1,8 +1,11 @@
-use std::io::Read;
+use std::io::{ErrorKind, Read};
 
 use structopt::StructOpt;
 
 use crate::advents::AdventYear;
+
+#[macro_use]
+mod helper;
 
 mod advent_2020;
 mod advent_adapters;
@@ -115,8 +118,15 @@ fn run_advent(year: u16, advent: Box<dyn advents::Advent>) {
         file.clear();
 
         std::fs::File::open(&path)
-            .unwrap_or_else(|_| panic!("missing input file \"{}\"", path.to_str().unwrap()))
-            .read_to_string(file)
+            .and_then(|mut f| f.read_to_string(file))
+            .and(Ok(()))
+            .or_else(|err| {
+                if err.kind() == ErrorKind::NotFound {
+                    std::fs::File::create(&path).and(Ok(()))
+                } else {
+                    Err(err)
+                }
+            })
             .expect("could not read input file");
     }
 

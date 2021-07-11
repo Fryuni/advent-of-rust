@@ -2,6 +2,7 @@ mod day15;
 mod day16;
 mod day17;
 mod day18;
+mod day19_with_nom;
 
 use crate::advent_adapters::StatefulAdvent;
 use crate::advents::{AdventYear, SkippedAdvent};
@@ -28,6 +29,7 @@ pub fn get_advent_year() -> AdventYear {
             Box::new(day16::AdventDay16),
             Box::new(StatefulAdvent::<day17::AdventDay17>::new(17)),
             Box::new(StatefulAdvent::<day18::AdventDay18>::new(18)),
+            Box::new(StatefulAdvent::<day19_with_nom::AdventDay19>::new(19)),
         ],
     )
 }

@@ -7,6 +7,7 @@ name = "advent-of-rust"
 version = "0.1.0"
 dependencies = [
  "dialoguer",
+ "itertools 0.10.1",
  "minisat",
  "nom 6.2.1",
  "structopt",
@@ -251,6 +252,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "itertools"
+version = "0.10.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "69ddb889f9d0d08a67338271fa9b62996bc788c7796a5c18cf057420aaed5eaf"
+dependencies = [
+ "either",
+]
+
+[[package]]
 name = "lazy_static"
 version = "1.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -308,7 +318,7 @@ checksum = "80b4c8c6f319b0186c7d4c19e90abfb463ddc45ca6998f60b4a8f411102ec018"
 dependencies = [
  "bindgen",
  "cc",
- "itertools",
+ "itertools 0.8.2",
 ]
 
 [[package]]
